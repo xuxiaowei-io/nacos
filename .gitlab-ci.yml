@@ -33,6 +33,7 @@ build:
     - git clone --depth 1 --branch $NACOS_TAG_VERSION https://github.com/alibaba/nacos.git
     - cd nacos
     - mvn clean install -DskipTests=true
+    - rm -rf $CI_PROJECT_DIR/.m2/repository/com/alibaba/nacos
   cache:
     key: "${CI_JOB_NAME}"
     paths:
