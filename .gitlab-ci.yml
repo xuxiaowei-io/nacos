@@ -34,6 +34,9 @@ build:
     - cd nacos
     - sed -i '\#<artifactId>nacos-config</artifactId>#i\<groupId>io.xuxiaowei.nacos</groupId>' $CI_PROJECT_DIR/nacos/config/pom.xml
     - sed -i 's|${project.groupId}|com.alibaba.nacos|g' $CI_PROJECT_DIR/nacos/config/pom.xml
+    - sed -i '\#<artifactId>nacos-api</artifactId>#a\<version>${project.version}</version>' $CI_PROJECT_DIR/nacos/config/pom.xml
+    - sed -i '\#<artifactId>nacos-core</artifactId>#a\<version>${project.version}</version>' $CI_PROJECT_DIR/nacos/config/pom.xml
+    - sed -i '\#<artifactId>nacos-encryption-plugin</artifactId>#a\<version>${project.version}</version>' $CI_PROJECT_DIR/nacos/config/pom.xml
     - mvn clean install -DskipTests=true
     - rm -rf $CI_PROJECT_DIR/.m2/repository/com/alibaba/nacos
   cache:
