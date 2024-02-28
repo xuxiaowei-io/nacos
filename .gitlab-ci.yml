@@ -32,6 +32,7 @@ build:
     - echo $NACOS_TAG_VERSION
     - git clone --depth 1 --branch $NACOS_TAG_VERSION https://github.com/alibaba/nacos.git
     - cd nacos
+    - sed -i '\#<artifactId>nacos-config</artifactId>#i\<groupId>io.xuxiaowei.nacos</groupId>' $CI_PROJECT_DIR/nacos/config/pom.xml
     - mvn clean install -DskipTests=true
     - rm -rf $CI_PROJECT_DIR/.m2/repository/com/alibaba/nacos
   cache:
