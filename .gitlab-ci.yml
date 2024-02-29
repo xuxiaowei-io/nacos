@@ -39,7 +39,7 @@ build:
     #- echo $SETTINGS_FILE
     - SETTINGS_FILE=/usr/share/maven/conf/settings.xml
     - sed -i "s#</servers>#<server><id>ossrh</id><username>$ossrh_user</username><password>$ossrh_pass</password></server>&#" $SETTINGS_FILE
-    - VERSION=2.3.0-SNAPSHOT
+    - VERSION=2.3.0
     - echo $VERSION
     - NACOS_TAG_VERSION=$(echo $VERSION | sed 's/-SNAPSHOT//')
     - echo $NACOS_TAG_VERSION
