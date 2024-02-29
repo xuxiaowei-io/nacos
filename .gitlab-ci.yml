@@ -62,6 +62,7 @@ build:
     - $CI_PROJECT_DIR/maven-dependencies-linux-amd64 dependency edit --file-path=$CI_PROJECT_DIR/nacos/istio/pom.xml                                          --group-id="\${project.groupId}"  --artifact-id=nacos-naming              --after-group-id=io.xuxiaowei.nacos --after-version=$VERSION
     - $CI_PROJECT_DIR/maven-dependencies-linux-amd64 dependency edit --file-path=$CI_PROJECT_DIR/nacos/prometheus/pom.xml                                     --group-id="\${project.groupId}"  --artifact-id=nacos-naming              --after-group-id=io.xuxiaowei.nacos --after-version=$VERSION
     - $CI_PROJECT_DIR/maven-dependencies-linux-amd64 dependency edit --file-path=$CI_PROJECT_DIR/nacos/console/pom.xml                                        --group-id="\${project.groupId}"  --artifact-id=nacos-naming              --after-group-id=io.xuxiaowei.nacos --after-version=$VERSION
+    - $CI_PROJECT_DIR/maven-dependencies-linux-amd64 dependency edit --file-path=$CI_PROJECT_DIR/nacos/console/pom.xml                                        --group-id=com.alibaba.nacos      --artifact-id=nacos-default-plugin-all  --after-group-id=io.xuxiaowei.nacos --after-version=$VERSION
     - $CI_PROJECT_DIR/maven-dependencies-linux-amd64 dependency edit --file-path=$CI_PROJECT_DIR/nacos/test/pom.xml                                           --group-id="\${project.groupId}"  --artifact-id=nacos-naming              --after-group-id=io.xuxiaowei.nacos --after-version=$VERSION
     - cd nacos
     - mvn clean install source:jar javadoc:jar -DskipTests=true
