@@ -139,7 +139,6 @@ build:
       -pl naming
       -pl plugin-default-impl/nacos-default-auth-plugin
       -pl plugin-default-impl/nacos-default-control-plugin
-      -pl plugin-default-impl/nacos-default-plugin-all
       -pl persistence
       -pl prometheus
       -pl sys
