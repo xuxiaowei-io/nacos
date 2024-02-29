@@ -18,6 +18,7 @@ build:
       --no-transfer-progress
       -DinstallAtEnd=true
       -DdeployAtEnd=true
+    MAVEN_DEPENDENCIES_URL: https://github.com/xuxiaowei-com-cn/maven-dependencies/releases/download/v0.0.0-2024-02-29T01-34Z/maven-dependencies-linux-amd64
   script:
     - GPG_FILE=`find / -name xuxiaowei_0x30F97859_SECRET`
     - echo $GPG_FILE
@@ -31,12 +32,14 @@ build:
     - NACOS_TAG_VERSION=$(echo $VERSION | sed 's/-SNAPSHOT//')
     - echo $NACOS_TAG_VERSION
     - git clone --depth 1 --branch $NACOS_TAG_VERSION https://github.com/alibaba/nacos.git
-    - cd nacos
+    - echo $MAVEN_DEPENDENCIES_URL
+    - wget $MAVEN_DEPENDENCIES_URL
+    - chmod +x maven-dependencies-linux-amd64
     - sed -i '\#<artifactId>nacos-config</artifactId>#i\<groupId>io.xuxiaowei.nacos</groupId>' $CI_PROJECT_DIR/nacos/config/pom.xml
-    - sed -i 's|${project.groupId}|com.alibaba.nacos|g' $CI_PROJECT_DIR/nacos/config/pom.xml
-    - sed -i '\#<artifactId>nacos-api</artifactId>#a\<version>${project.version}</version>' $CI_PROJECT_DIR/nacos/config/pom.xml
-    - sed -i '\#<artifactId>nacos-core</artifactId>#a\<version>${project.version}</version>' $CI_PROJECT_DIR/nacos/config/pom.xml
-    - sed -i '\#<artifactId>nacos-encryption-plugin</artifactId>#a\<version>${project.version}</version>' $CI_PROJECT_DIR/nacos/config/pom.xml
+    - $CI_PROJECT_DIR/maven-dependencies-linux-amd64 dependency edit --file-path=$CI_PROJECT_DIR/nacos/config/pom.xml --group-id="\${project.groupId}"  --artifact-id=nacos-api                 --after-group-id=com.alibaba.nacos --after-version=$NACOS_TAG_VERSION
+    - $CI_PROJECT_DIR/maven-dependencies-linux-amd64 dependency edit --file-path=$CI_PROJECT_DIR/nacos/config/pom.xml --group-id="\${project.groupId}"  --artifact-id=nacos-core                --after-group-id=com.alibaba.nacos --after-version=$NACOS_TAG_VERSION
+    - $CI_PROJECT_DIR/maven-dependencies-linux-amd64 dependency edit --file-path=$CI_PROJECT_DIR/nacos/config/pom.xml --group-id=com.alibaba.nacos      --artifact-id=nacos-encryption-plugin   --after-group-id=com.alibaba.nacos --after-version=$NACOS_TAG_VERSION
+    - cd nacos
     - mvn clean install -DskipTests=true
     - rm -rf $CI_PROJECT_DIR/.m2/repository/com/alibaba/nacos
   cache:
