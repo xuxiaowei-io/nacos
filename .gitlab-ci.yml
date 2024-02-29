@@ -91,26 +91,25 @@ build:
     - POM_XML_1=$(echo -e "$POM_XML_1" | tr -d '\n')
     - POM_XML_2=$(echo -e "$POM_XML_2" | tr -d '\n')
     - POM_XML_3=$(echo -e "$POM_XML_3" | tr -d '\n')
-    - sed -i '/<reporting>/,/<\/reporting>/d' ./nacos/naming/pom.xml
-    - sed -i "s#</project>#$POM_XML_3&#"      ./nacos/auth/pom.xml
-    - sed -i "s#</project>#$POM_XML_3&#"      ./nacos/core/pom.xml
-    - sed -i "s#</project>#$POM_XML_3&#"      ./nacos/plugin-default-impl/nacos-default-auth-plugin/pom.xml
-    - sed -i "s#</project>#$POM_XML_3&#"      ./nacos/plugin-default-impl/nacos-default-control-plugin/pom.xml
-    - sed -i "s#</project>#$POM_XML_3&#"      ./nacos/plugin-default-impl/nacos-default-plugin-all/pom.xml
-    - sed -i "s#</project>#$POM_XML_3&#"      ./nacos/persistence/pom.xml
-    - sed -i "s#</project>#$POM_XML_3&#"      ./nacos/sys/pom.xml
-    - sed -i "s#</project>#$POM_XML_1&#"      ./nacos/cmdb/pom.xml
-    - sed -i "s#</project>#$POM_XML_1&#"      ./nacos/consistency/pom.xml
-    - sed -i "s#</project>#$POM_XML_1&#"      ./nacos/config/pom.xml
-    - sed -i "s#</project>#$POM_XML_1&#"      ./nacos/istio/pom.xml
-    - sed -i "s#</project>#$POM_XML_1&#"      ./nacos/naming/pom.xml
-    - sed -i "s#</project>#$POM_XML_1&#"      ./nacos/prometheus/pom.xml
-    - sed -i "s#</plugins>#$POM_XML_2&#"      ./nacos/cmdb/pom.xml
-    - sed -i "s#</plugins>#$POM_XML_2&#"      ./nacos/consistency/pom.xml
-    - sed -i "s#</plugins>#$POM_XML_2&#"      ./nacos/config/pom.xml
-    - sed -i "s#</plugins>#$POM_XML_2&#"      ./nacos/istio/pom.xml
-    - sed -i "s#</plugins>#$POM_XML_2&#"      ./nacos/naming/pom.xml
-    - sed -i "s#</plugins>#$POM_XML_2&#"      ./nacos/prometheus/pom.xml
+    - sed -i "s#</project>#$POM_XML_3&#" ./nacos/auth/pom.xml
+    - sed -i "s#</project>#$POM_XML_3&#" ./nacos/core/pom.xml
+    - sed -i "s#</project>#$POM_XML_3&#" ./nacos/plugin-default-impl/nacos-default-auth-plugin/pom.xml
+    - sed -i "s#</project>#$POM_XML_3&#" ./nacos/plugin-default-impl/nacos-default-control-plugin/pom.xml
+    - sed -i "s#</project>#$POM_XML_3&#" ./nacos/plugin-default-impl/nacos-default-plugin-all/pom.xml
+    - sed -i "s#</project>#$POM_XML_3&#" ./nacos/persistence/pom.xml
+    - sed -i "s#</project>#$POM_XML_3&#" ./nacos/sys/pom.xml
+    - sed -i "s#</project>#$POM_XML_1&#" ./nacos/cmdb/pom.xml
+    - sed -i "s#</project>#$POM_XML_1&#" ./nacos/consistency/pom.xml
+    - sed -i "s#</project>#$POM_XML_1&#" ./nacos/config/pom.xml
+    - sed -i "s#</project>#$POM_XML_1&#" ./nacos/istio/pom.xml
+    - sed -i "s#</project>#$POM_XML_1&#" ./nacos/naming/pom.xml
+    - sed -i "s#</project>#$POM_XML_1&#" ./nacos/prometheus/pom.xml
+    - sed -i "s#</plugins>#$POM_XML_2&#" ./nacos/cmdb/pom.xml
+    - sed -i "s#</plugins>#$POM_XML_2&#" ./nacos/consistency/pom.xml
+    - sed -i "s#</plugins>#$POM_XML_2&#" ./nacos/config/pom.xml
+    - sed -i "s#</plugins>#$POM_XML_2&#" ./nacos/istio/pom.xml
+    - sed -i "s#</plugins>#$POM_XML_2&#" ./nacos/naming/pom.xml
+    - sed -i "s#</plugins>#$POM_XML_2&#" ./nacos/prometheus/pom.xml
     - echo $MAVEN_DEPENDENCIES_URL
     - wget -O maven-dependencies $MAVEN_DEPENDENCIES_URL
     - chmod +x maven-dependencies
