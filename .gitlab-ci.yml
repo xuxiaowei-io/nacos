@@ -152,6 +152,19 @@ build:
     name: "${CI_JOB_NAME}"
     paths:
       - nacos
+      - auth/target/nacos-auth-*
+      - cmdb/target/nacos-cmdb-*
+      - consistency/target/nacos-consistency-*
+      - config/target/nacos-config-*
+      - core/target/nacos-core-*
+      - istio/target/nacos-istio-*
+      - naming/target/nacos-naming-*
+      - plugin-default-impl/nacos-default-auth-plugin/target/nacos-default-auth-plugin-*
+      - plugin-default-impl/nacos-default-control-plugin/target/nacos-default-control-plugin-*
+      - plugin-default-impl/nacos-default-plugin-all/target/nacos-default-plugin-all-*
+      - persistence/target/nacos-persistence-*
+      - prometheus/target/nacos-prometheus-*
+      - sys/target/nacos-sys-*
   cache:
     key: "${CI_JOB_NAME}"
     paths:
