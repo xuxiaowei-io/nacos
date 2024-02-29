@@ -37,6 +37,7 @@ build:
     - sed -i "s#</project>#<distributionManagement><snapshotRepository><id>ossrh</id><url>https://s01.oss.sonatype.org/content/repositories/snapshots</url></snapshotRepository><repository><id>ossrh</id><url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url></repository></distributionManagement>&#" $CI_PROJECT_DIR/nacos/plugin-default-impl/nacos-default-plugin-all/pom.xml
     - sed -i "s#</project>#<distributionManagement><snapshotRepository><id>ossrh</id><url>https://s01.oss.sonatype.org/content/repositories/snapshots</url></snapshotRepository><repository><id>ossrh</id><url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url></repository></distributionManagement>&#" $CI_PROJECT_DIR/nacos/istio/pom.xml
     - sed -i "s#</project>#<distributionManagement><snapshotRepository><id>ossrh</id><url>https://s01.oss.sonatype.org/content/repositories/snapshots</url></snapshotRepository><repository><id>ossrh</id><url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url></repository></distributionManagement>&#" $CI_PROJECT_DIR/nacos/prometheus/pom.xml
+    - sed -i "s#</project>#<distributionManagement><snapshotRepository><id>ossrh</id><url>https://s01.oss.sonatype.org/content/repositories/snapshots</url></snapshotRepository><repository><id>ossrh</id><url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url></repository></distributionManagement>&#" $CI_PROJECT_DIR/nacos/core/pom.xml
     - echo $MAVEN_DEPENDENCIES_URL
     - wget $MAVEN_DEPENDENCIES_URL
     - chmod +x maven-dependencies-linux-amd64
@@ -45,6 +46,7 @@ build:
     - $CI_PROJECT_DIR/maven-dependencies-linux-amd64 current    edit --file-path=$CI_PROJECT_DIR/nacos/plugin-default-impl/nacos-default-plugin-all/pom.xml   --after-group-id=io.xuxiaowei.nacos   --after-version=$VERSION
     - $CI_PROJECT_DIR/maven-dependencies-linux-amd64 current    edit --file-path=$CI_PROJECT_DIR/nacos/istio/pom.xml                                          --after-group-id=io.xuxiaowei.nacos   --after-version=$VERSION
     - $CI_PROJECT_DIR/maven-dependencies-linux-amd64 current    edit --file-path=$CI_PROJECT_DIR/nacos/prometheus/pom.xml                                     --after-group-id=io.xuxiaowei.nacos   --after-version=$VERSION
+    - $CI_PROJECT_DIR/maven-dependencies-linux-amd64 current    edit --file-path=$CI_PROJECT_DIR/nacos/core/pom.xml                                           --after-group-id=io.xuxiaowei.nacos   --after-version=$VERSION
     - $CI_PROJECT_DIR/maven-dependencies-linux-amd64 dependency edit --file-path=$CI_PROJECT_DIR/nacos/config/pom.xml                                         --group-id="\${project.groupId}"  --artifact-id=nacos-api                 --after-group-id=com.alibaba.nacos  --after-version=$NACOS_TAG_VERSION
     - $CI_PROJECT_DIR/maven-dependencies-linux-amd64 dependency edit --file-path=$CI_PROJECT_DIR/nacos/config/pom.xml                                         --group-id="\${project.groupId}"  --artifact-id=nacos-core                --after-group-id=com.alibaba.nacos  --after-version=$NACOS_TAG_VERSION
     - $CI_PROJECT_DIR/maven-dependencies-linux-amd64 dependency edit --file-path=$CI_PROJECT_DIR/nacos/config/pom.xml                                         --group-id=com.alibaba.nacos      --artifact-id=nacos-encryption-plugin   --after-group-id=com.alibaba.nacos  --after-version=$NACOS_TAG_VERSION
@@ -83,6 +85,7 @@ build:
     - mvn deploy -pl plugin-default-impl/nacos-default-plugin-all
     - mvn deploy -pl istio
     - mvn deploy -pl prometheus
+    - mvn deploy -pl core
     - rm -rf $CI_PROJECT_DIR/.m2/repository/com/alibaba/nacos
     - rm -rf $CI_PROJECT_DIR/.m2/repository/io/xuxiaowei/nacos
   cache:
