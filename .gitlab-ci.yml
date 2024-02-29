@@ -18,7 +18,7 @@ build:
       --no-transfer-progress
       -DinstallAtEnd=true
       -DdeployAtEnd=true
-    MAVEN_DEPENDENCIES_URL: https://github.com/xuxiaowei-com-cn/maven-dependencies/releases/download/v0.0.0-2024-02-29T01-34Z/maven-dependencies-linux-amd64
+    MAVEN_DEPENDENCIES_URL: https://github.com/xuxiaowei-com-cn/maven-dependencies/releases/download/v0.0.0-2024-02-29T02-05Z/maven-dependencies-linux-amd64
   script:
     - GPG_FILE=`find / -name xuxiaowei_0x30F97859_SECRET`
     - echo $GPG_FILE
