@@ -62,19 +62,20 @@ build:
     - NACOS_TAG_VERSION=$(echo $VERSION | sed 's/-SNAPSHOT//')
     - echo $NACOS_TAG_VERSION
     - git clone --depth 1 --branch $NACOS_TAG_VERSION https://github.com/alibaba/nacos.git
-    - sed -i "s#</project>#"$POM_XML"&#" ./nacos/auth/pom.xml
-    - sed -i "s#</project>#"$POM_XML"&#" ./nacos/cmdb/pom.xml
-    - sed -i "s#</project>#"$POM_XML"&#" ./nacos/consistency/pom.xml
-    - sed -i "s#</project>#"$POM_XML"&#" ./nacos/config/pom.xml
-    - sed -i "s#</project>#"$POM_XML"&#" ./nacos/core/pom.xml
-    - sed -i "s#</project>#"$POM_XML"&#" ./nacos/istio/pom.xml
-    - sed -i "s#</project>#"$POM_XML"&#" ./nacos/naming/pom.xml
-    - sed -i "s#</project>#"$POM_XML"&#" ./nacos/plugin-default-impl/nacos-default-auth-plugin/pom.xml
-    - sed -i "s#</project>#"$POM_XML"&#" ./nacos/plugin-default-impl/nacos-default-control-plugin/pom.xml
-    - sed -i "s#</project>#"$POM_XML"&#" ./nacos/plugin-default-impl/nacos-default-plugin-all/pom.xml
-    - sed -i "s#</project>#"$POM_XML"&#" ./nacos/persistence/pom.xml
-    - sed -i "s#</project>#"$POM_XML"&#" ./nacos/prometheus/pom.xml
-    - sed -i "s#</project>#"$POM_XML"&#" ./nacos/sys/pom.xml
+    - POM_XML=$(echo -e "$POM_XML" | tr -d '\n')
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/auth/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/cmdb/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/consistency/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/config/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/core/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/istio/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/naming/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/plugin-default-impl/nacos-default-auth-plugin/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/plugin-default-impl/nacos-default-control-plugin/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/plugin-default-impl/nacos-default-plugin-all/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/persistence/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/prometheus/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/sys/pom.xml
     - echo $MAVEN_DEPENDENCIES_URL
     - wget -O maven-dependencies $MAVEN_DEPENDENCIES_URL
     - chmod +x maven-dependencies
