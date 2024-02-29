@@ -143,8 +143,13 @@ build:
       -pl persistence
       -pl prometheus
       -pl sys
+    - mvn clean
     - rm -rf $CI_PROJECT_DIR/.m2/repository/com/alibaba/nacos
     - rm -rf $CI_PROJECT_DIR/.m2/repository/io/xuxiaowei/nacos
+  artifacts:
+    name: "${CI_JOB_NAME}"
+    paths:
+      - nacos
   cache:
     key: "${CI_JOB_NAME}"
     paths:
