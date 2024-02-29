@@ -182,19 +182,19 @@ build:
     - ./maven-dependencies dependency edit --file-path=$CI_PROJECT_DIR/nacos/sys/pom.xml                                                --group-id="\${project.groupId}"  --artifact-id=nacos-common                      --after-group-id=com.alibaba.nacos  --after-version=$NACOS_TAG_VERSION
     - cd nacos
     - mvn clean -U install source:jar javadoc:jar                                               -Dmaven.test.skip=true
-    - mvn source:jar javadoc:jar deploy -pl auth                                                -Dmaven.test.skip=true
-    - mvn source:jar javadoc:jar deploy -pl cmdb                                                -Dmaven.test.skip=true
-    - mvn source:jar javadoc:jar deploy -pl consistency                                         -Dmaven.test.skip=true
-    - mvn source:jar javadoc:jar deploy -pl config                                              -Dmaven.test.skip=true
-    - mvn source:jar javadoc:jar deploy -pl core                                                -Dmaven.test.skip=true
-    - mvn source:jar javadoc:jar deploy -pl istio                                               -Dmaven.test.skip=true
-    - mvn source:jar javadoc:jar deploy -pl naming                                              -Dmaven.test.skip=true
-    - mvn source:jar javadoc:jar deploy -pl plugin-default-impl/nacos-default-auth-plugin       -Dmaven.test.skip=true
-    - mvn source:jar javadoc:jar deploy -pl plugin-default-impl/nacos-default-control-plugin    -Dmaven.test.skip=true
-    - mvn source:jar javadoc:jar deploy -pl plugin-default-impl/nacos-default-plugin-all        -Dmaven.test.skip=true
-    - mvn source:jar javadoc:jar deploy -pl persistence                                         -Dmaven.test.skip=true
-    - mvn source:jar javadoc:jar deploy -pl prometheus                                          -Dmaven.test.skip=true
-    - mvn source:jar javadoc:jar deploy -pl sys                                                 -Dmaven.test.skip=true
+    - mvn deploy source:jar javadoc:jar -pl auth                                                -Dmaven.test.skip=true
+    - mvn deploy source:jar javadoc:jar -pl cmdb                                                -Dmaven.test.skip=true
+    - mvn deploy source:jar javadoc:jar -pl consistency                                         -Dmaven.test.skip=true
+    - mvn deploy source:jar javadoc:jar -pl config                                              -Dmaven.test.skip=true
+    - mvn deploy source:jar javadoc:jar -pl core                                                -Dmaven.test.skip=true
+    - mvn deploy source:jar javadoc:jar -pl istio                                               -Dmaven.test.skip=true
+    - mvn deploy source:jar javadoc:jar -pl naming                                              -Dmaven.test.skip=true
+    - mvn deploy source:jar javadoc:jar -pl plugin-default-impl/nacos-default-auth-plugin       -Dmaven.test.skip=true
+    - mvn deploy source:jar javadoc:jar -pl plugin-default-impl/nacos-default-control-plugin    -Dmaven.test.skip=true
+    - mvn deploy source:jar javadoc:jar -pl plugin-default-impl/nacos-default-plugin-all        -Dmaven.test.skip=true
+    - mvn deploy source:jar javadoc:jar -pl persistence                                         -Dmaven.test.skip=true
+    - mvn deploy source:jar javadoc:jar -pl prometheus                                          -Dmaven.test.skip=true
+    - mvn deploy source:jar javadoc:jar -pl sys                                                 -Dmaven.test.skip=true
     - rm -rf $CI_PROJECT_DIR/.m2/repository/com/alibaba/nacos
     - rm -rf $CI_PROJECT_DIR/.m2/repository/io/xuxiaowei/nacos
   cache:
