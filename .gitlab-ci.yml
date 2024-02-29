@@ -44,6 +44,7 @@ build:
     - cd nacos
     - mvn clean install -DskipTests=true
     - rm -rf $CI_PROJECT_DIR/.m2/repository/com/alibaba/nacos
+    - rm -rf $CI_PROJECT_DIR/.m2/repository/io/xuxiaowei/nacos
   cache:
     key: "${CI_JOB_NAME}"
     paths:
