@@ -20,35 +20,7 @@ build:
       -DinstallAtEnd=true
       -DdeployAtEnd=true
     MAVEN_DEPENDENCIES_URL: https://github.com/xuxiaowei-com-cn/maven-dependencies/releases/download/v0.0.0-2024-02-29T02-40Z/maven-dependencies-linux-amd64
-    POM_XML_1: |
-      <distributionManagement>
-          <snapshotRepository>
-              <id>ossrh</id>
-              <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-          </snapshotRepository>
-          <repository>
-              <id>ossrh</id>
-              <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-          </repository>
-      </distributionManagement>
-    POM_XML_2: |
-      <plugins>
-          <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-gpg-plugin</artifactId>
-              <version>3.1.0</version>
-              <executions>
-                  <execution>
-                      <id>sign-artifacts</id>
-                      <phase>verify</phase>
-                      <goals>
-                          <goal>sign</goal>
-                      </goals>
-                  </execution>
-              </executions>
-          </plugin>
-      </plugins>
-    POM_XML_3: |
+    POM_XML: |
       <distributionManagement>
           <snapshotRepository>
               <id>ossrh</id>
@@ -60,22 +32,22 @@ build:
           </repository>
       </distributionManagement>
       <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
+          <plugins>
+              <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-gpg-plugin</artifactId>
+                  <version>3.1.0</version>
+                  <executions>
+                      <execution>
+                          <id>sign-artifacts</id>
+                          <phase>verify</phase>
+                          <goals>
+                              <goal>sign</goal>
+                          </goals>
+                      </execution>
+                  </executions>
+              </plugin>
+          </plugins>
       </build>
   script:
     - GPG_FILE=`find / -name xuxiaowei_0x30F97859_SECRET`
@@ -90,22 +62,20 @@ build:
     - NACOS_TAG_VERSION=$(echo $VERSION | sed 's/-SNAPSHOT//')
     - echo $NACOS_TAG_VERSION
     - git clone --depth 1 --branch $NACOS_TAG_VERSION https://github.com/alibaba/nacos.git
-    - POM_XML_1=$(echo -e "$POM_XML_1" | tr -d '\n')
-    - POM_XML_2=$(echo -e "$POM_XML_2" | tr -d '\n')
-    - POM_XML_3=$(echo -e "$POM_XML_3" | tr -d '\n')
-    - sed -i "s#</project>#$POM_XML_3&#" ./nacos/auth/pom.xml
-    - sed -i "s#</project>#$POM_XML_3&#" ./nacos/core/pom.xml
-    - sed -i "s#</project>#$POM_XML_3&#" ./nacos/plugin-default-impl/nacos-default-auth-plugin/pom.xml
-    - sed -i "s#</project>#$POM_XML_3&#" ./nacos/plugin-default-impl/nacos-default-control-plugin/pom.xml
-    - sed -i "s#</project>#$POM_XML_3&#" ./nacos/plugin-default-impl/nacos-default-plugin-all/pom.xml
-    - sed -i "s#</project>#$POM_XML_3&#" ./nacos/persistence/pom.xml
-    - sed -i "s#</project>#$POM_XML_3&#" ./nacos/sys/pom.xml
-    - sed -i "s#</project>#$POM_XML_1&#" ./nacos/cmdb/pom.xml
-    - sed -i "s#</project>#$POM_XML_1&#" ./nacos/consistency/pom.xml
-    - sed -i "s#</project>#$POM_XML_1&#" ./nacos/config/pom.xml
-    - sed -i "s#</project>#$POM_XML_1&#" ./nacos/istio/pom.xml
-    - sed -i "s#</project>#$POM_XML_1&#" ./nacos/naming/pom.xml
-    - sed -i "s#</project>#$POM_XML_1&#" ./nacos/prometheus/pom.xml
+    - POM_XML=$(echo -e "$POM_XML" | tr -d '\n')
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/auth/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/cmdb/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/consistency/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/config/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/core/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/istio/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/naming/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/plugin-default-impl/nacos-default-auth-plugin/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/plugin-default-impl/nacos-default-control-plugin/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/plugin-default-impl/nacos-default-plugin-all/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/persistence/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/prometheus/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/sys/pom.xml
     - echo $MAVEN_DEPENDENCIES_URL
     - wget -O maven-dependencies $MAVEN_DEPENDENCIES_URL
     - chmod +x maven-dependencies
