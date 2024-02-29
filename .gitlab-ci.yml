@@ -85,13 +85,13 @@ build:
     - $CI_PROJECT_DIR/maven-dependencies-linux-amd64 dependency edit --file-path=$CI_PROJECT_DIR/nacos/test/pom.xml                                           --group-id="\${project.groupId}"  --artifact-id=nacos-core                --after-group-id=io.xuxiaowei.nacos --after-version=$VERSION
     - $CI_PROJECT_DIR/maven-dependencies-linux-amd64 dependency edit --file-path=$CI_PROJECT_DIR/nacos/test/pom.xml                                           --group-id="\${project.groupId}"  --artifact-id=nacos-naming              --after-group-id=io.xuxiaowei.nacos --after-version=$VERSION
     - cd nacos
-    - mvn clean -U install source:jar javadoc:jar -Dmaven.test.skip=true
-    - mvn deploy -pl config
-    - mvn deploy -pl core
-    - mvn deploy -pl istio
-    - mvn deploy -pl naming
-    - mvn deploy -pl plugin-default-impl/nacos-default-plugin-all
-    - mvn deploy -pl prometheus
+    - mvn clean -U install source:jar javadoc:jar                   -Dmaven.test.skip=true
+    - mvn deploy -pl config                                         -Dmaven.test.skip=true
+    - mvn deploy -pl core                                           -Dmaven.test.skip=true
+    - mvn deploy -pl istio                                          -Dmaven.test.skip=true
+    - mvn deploy -pl naming                                         -Dmaven.test.skip=true
+    - mvn deploy -pl plugin-default-impl/nacos-default-plugin-all   -Dmaven.test.skip=true
+    - mvn deploy -pl prometheus                                     -Dmaven.test.skip=true
     - rm -rf $CI_PROJECT_DIR/.m2/repository/com/alibaba/nacos
     - rm -rf $CI_PROJECT_DIR/.m2/repository/io/xuxiaowei/nacos
   cache:
