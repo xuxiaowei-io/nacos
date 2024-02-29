@@ -136,6 +136,9 @@ build:
     key: "${CI_JOB_NAME}"
     paths:
       - .m2/repository
+  rules:
+    - changes:
+        - .gitlab-ci.yml
 
 # 嵌入
 include:
