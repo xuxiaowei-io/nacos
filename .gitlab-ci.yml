@@ -115,8 +115,9 @@ build:
     - ./maven-dependencies dependency   edit --file-path=$CI_PROJECT_DIR/nacos/plugin-default-impl/pom.xml                                --group-id=com.alibaba.nacos      --artifact-id=nacos-sys                         --after-group-id=io.xuxiaowei.nacos --after-version=$VERSION
     - ./maven-dependencies dependency   edit --file-path=$CI_PROJECT_DIR/nacos/plugin-default-impl/pom.xml                                --group-id=com.alibaba.nacos      --artifact-id=nacos-config                      --after-group-id=io.xuxiaowei.nacos --after-version=$VERSION
     - cd nacos
+    - mvn clean -U install -Dmaven.test.skip=true
     - >-
-      mvn clean -U install -Dmaven.test.skip=true deploy -Prelease-sign-artifacts
+      mvn install -Dmaven.test.skip=true deploy -Prelease-sign-artifacts
       -pl auth
       -pl cmdb
       -pl consistency
