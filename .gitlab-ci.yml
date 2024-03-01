@@ -115,15 +115,15 @@ build:
     - cd nacos
     - >-
       mvn clean -U install -Dmaven.test.skip=true deploy -Prelease-sign-artifacts
-    # -pl auth
-    # -pl cmdb
-    # -pl consistency
       -pl config
-    # -pl core
       -pl istio
       -pl naming
       -pl plugin-default-impl
       -pl prometheus
+    # -pl auth
+    # -pl cmdb
+    # -pl consistency
+    # -pl core
     # -pl sys
     - rm -rf $CI_PROJECT_DIR/.m2/repository/com/alibaba/nacos
     - rm -rf $CI_PROJECT_DIR/.m2/repository/io/xuxiaowei/nacos
