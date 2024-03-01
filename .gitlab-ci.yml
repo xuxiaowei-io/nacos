@@ -55,6 +55,7 @@ build:
     - sed -i "s#</project>#$POM_XML&#" ./nacos/prometheus/pom.xml
     - sed -i "s#</project>#$POM_XML&#" ./nacos/sys/pom.xml
     - sed -i "s#</project>#$POM_XML&#" ./nacos/plugin-default-impl/pom.xml
+    - sed -i "s#</project>#$POM_XML&#" ./nacos/plugin/control/pom.xml
     - echo $MAVEN_DEPENDENCIES_URL
     - wget -O maven-dependencies $MAVEN_DEPENDENCIES_URL
     - chmod +x maven-dependencies
@@ -68,6 +69,7 @@ build:
     - ./maven-dependencies current      edit --file-path=$CI_PROJECT_DIR/nacos/prometheus/pom.xml                                         --after-group-id=io.xuxiaowei.nacos   --after-version=$VERSION
     - ./maven-dependencies current      edit --file-path=$CI_PROJECT_DIR/nacos/sys/pom.xml                                                --after-group-id=io.xuxiaowei.nacos   --after-version=$VERSION
     - ./maven-dependencies current      edit --file-path=$CI_PROJECT_DIR/nacos/plugin-default-impl/pom.xml                                --after-group-id=io.xuxiaowei.nacos   --after-version=$VERSION
+    - ./maven-dependencies current      edit --file-path=$CI_PROJECT_DIR/nacos/plugin/control/pom.xml                                     --after-group-id=io.xuxiaowei.nacos   --after-version=$VERSION
     - ./maven-dependencies description  edit --file-path=$CI_PROJECT_DIR/nacos/auth/pom.xml                                               --after-description=nacos-auth
     - ./maven-dependencies description  edit --file-path=$CI_PROJECT_DIR/nacos/cmdb/pom.xml                                               --after-description=nacos-cmdb
     - ./maven-dependencies description  edit --file-path=$CI_PROJECT_DIR/nacos/consistency/pom.xml                                        --after-description=nacos-consistency
@@ -78,6 +80,7 @@ build:
     - ./maven-dependencies description  edit --file-path=$CI_PROJECT_DIR/nacos/prometheus/pom.xml                                         --after-description=nacos-prometheus
     - ./maven-dependencies description  edit --file-path=$CI_PROJECT_DIR/nacos/sys/pom.xml                                                --after-description=nacos-sys
     - ./maven-dependencies description  edit --file-path=$CI_PROJECT_DIR/nacos/plugin-default-impl/pom.xml                                --after-description=plugin-default-impl
+    - ./maven-dependencies description  edit --file-path=$CI_PROJECT_DIR/nacos/plugin/control/pom.xml                                     --after-description=nacos-contrl-plugin
     - ./maven-dependencies dependency   edit --file-path=$CI_PROJECT_DIR/nacos/auth/pom.xml                                               --group-id=com.alibaba.nacos      --artifact-id=nacos-auth-plugin                 --after-group-id=com.alibaba.nacos  --after-version=$NACOS_TAG_VERSION
     - ./maven-dependencies dependency   edit --file-path=$CI_PROJECT_DIR/nacos/auth/pom.xml                                               --group-id="\${project.groupId}"  --artifact-id=nacos-common                      --after-group-id=com.alibaba.nacos  --after-version=$NACOS_TAG_VERSION
     - ./maven-dependencies dependency   edit --file-path=$CI_PROJECT_DIR/nacos/consistency/pom.xml                                        --group-id="\${project.groupId}"  --artifact-id=nacos-common                      --after-group-id=com.alibaba.nacos  --after-version=$NACOS_TAG_VERSION
@@ -134,6 +137,7 @@ build:
       -pl prometheus
       -pl sys
       -pl plugin-default-impl
+      -pl plugin/control
     - rm -rf $CI_PROJECT_DIR/.m2/repository/com/alibaba/nacos
     - rm -rf $CI_PROJECT_DIR/.m2/repository/io/xuxiaowei/nacos
   artifacts:
