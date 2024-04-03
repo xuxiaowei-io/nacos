@@ -39,7 +39,7 @@ build:
     #- echo $SETTINGS_FILE
     - SETTINGS_FILE=/usr/share/maven/conf/settings.xml
     - sed -i "s#</servers>#<server><id>ossrh</id><username>$ossrh_user</username><password>$ossrh_pass</password></server>&#" $SETTINGS_FILE
-    - VERSION=2.3.1
+    - VERSION=2.3.2
     - echo $VERSION
     - NACOS_TAG_VERSION=$(echo $VERSION | sed 's/-SNAPSHOT//')
     - echo $NACOS_TAG_VERSION
@@ -83,7 +83,7 @@ build:
     - ./maven-dependencies description  edit --file-path=$CI_PROJECT_DIR/nacos/naming/pom.xml                                             --after-description=nacos-naming
     - ./maven-dependencies description  edit --file-path=$CI_PROJECT_DIR/nacos/plugin-default-impl/nacos-default-auth-plugin/pom.xml      --after-description=nacos-default-auth-plugin
     - ./maven-dependencies description  edit --file-path=$CI_PROJECT_DIR/nacos/plugin-default-impl/nacos-default-control-plugin/pom.xml   --after-description=nacos-default-control-plugin
-    - ./maven-dependencies description  edit --file-path=$CI_PROJECT_DIR/nacos/plugin-default-impl/nacos-default-plugin-all/pom.xml       --after-description=nacos-default-plugin-al
+    - ./maven-dependencies description  edit --file-path=$CI_PROJECT_DIR/nacos/plugin-default-impl/nacos-default-plugin-all/pom.xml       --after-description=nacos-default-plugin-all
     - ./maven-dependencies description  edit --file-path=$CI_PROJECT_DIR/nacos/persistence/pom.xml                                        --after-description=nacos-persistence
     - ./maven-dependencies description  edit --file-path=$CI_PROJECT_DIR/nacos/prometheus/pom.xml                                         --after-description=nacos-prometheus
     - ./maven-dependencies description  edit --file-path=$CI_PROJECT_DIR/nacos/sys/pom.xml                                                --after-description=nacos-sys
