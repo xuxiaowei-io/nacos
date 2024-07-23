@@ -150,6 +150,7 @@ build:
       -pl auth
       -pl cmdb
       -pl consistency
+      -pl common
       -pl config
       -pl core
       -pl istio
