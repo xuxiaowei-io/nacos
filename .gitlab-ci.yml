@@ -148,7 +148,7 @@ build:
     - cp Author.java  nacos/plugin-default-impl/nacos-default-plugin-all/src/main/java/io/xuxiaowei/nacos
     - cd nacos
     - >-
-      mvn clean -U install -Dmaven.test.skip=true deploy -Prelease-sign-artifacts
+      mvn clean -e -U install -Dmaven.test.skip=true deploy -Prelease-sign-artifacts
       -pl api
       -pl auth
       -pl cmdb
