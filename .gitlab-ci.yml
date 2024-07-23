@@ -78,6 +78,7 @@ build:
     - ./maven-dependencies current      edit --file-path=$CI_PROJECT_DIR/nacos/plugin-default-impl/nacos-default-plugin-all/pom.xml       --after-group-id=io.xuxiaowei.nacos   --after-version=$VERSION
     - ./maven-dependencies current      edit --file-path=$CI_PROJECT_DIR/nacos/prometheus/pom.xml                                         --after-group-id=io.xuxiaowei.nacos   --after-version=$VERSION
     - ./maven-dependencies current      edit --file-path=$CI_PROJECT_DIR/nacos/sys/pom.xml                                                --after-group-id=io.xuxiaowei.nacos   --after-version=$VERSION
+    - ./maven-dependencies current      edit --file-path=$CI_PROJECT_DIR/nacos/plugin/environment/pom.xml                                 --after-group-id=io.xuxiaowei.nacos   --after-version=$VERSION
     - ./maven-dependencies description  edit --file-path=$CI_PROJECT_DIR/nacos/auth/pom.xml                                               --after-description=nacos-auth
     - ./maven-dependencies description  edit --file-path=$CI_PROJECT_DIR/nacos/cmdb/pom.xml                                               --after-description=nacos-cmdb
     - ./maven-dependencies description  edit --file-path=$CI_PROJECT_DIR/nacos/config/pom.xml                                             --after-description=nacos-config
