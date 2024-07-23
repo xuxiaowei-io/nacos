@@ -150,21 +150,21 @@ build:
     # deploy
     - >-
       mvn clean -e -U install -Dmaven.test.skip=true -Prelease-sign-artifacts
-      -pl api
-      -pl auth
-      -pl cmdb
-      -pl common
-      -pl config
-      -pl consistency
-      -pl core
-      -pl istio
-      -pl naming
-      -pl persistence
-      -pl plugin-default-impl/nacos-default-auth-plugin
-      -pl plugin-default-impl/nacos-default-control-plugin
-      -pl plugin-default-impl/nacos-default-plugin-all
-      -pl prometheus
-      -pl sys
+#      -pl api
+#      -pl auth
+#      -pl cmdb
+#      -pl common
+#      -pl config
+#      -pl consistency
+#      -pl core
+#      -pl istio
+#      -pl naming
+#      -pl persistence
+#      -pl plugin-default-impl/nacos-default-auth-plugin
+#      -pl plugin-default-impl/nacos-default-control-plugin
+#      -pl plugin-default-impl/nacos-default-plugin-all
+#      -pl prometheus
+#      -pl sys
     - rm -rf $CI_PROJECT_DIR/.m2/repository/com/alibaba/nacos
     - rm -rf $CI_PROJECT_DIR/.m2/repository/io/xuxiaowei/nacos
   artifacts:
