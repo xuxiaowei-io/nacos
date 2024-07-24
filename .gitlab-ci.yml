@@ -162,7 +162,7 @@ build:
     - cd nacos
     - >-
       mvn clean -e -U install -Dmaven.test.skip=true deploy -Prelease-sign-artifacts
-      -pl !console,!plugin-default-impl/nacos-default-plugin-all,!test,!test/config-test,!test/core-test,!test/naming-test,!distribution,!example
+      -pl !console,!test,!test/config-test,!test/core-test,!test/naming-test,!distribution,!example
 #      -pl api
 #      -pl auth
 #      -pl cmdb
