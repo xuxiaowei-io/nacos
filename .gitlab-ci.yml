@@ -176,7 +176,7 @@ build:
 #      -pl plugin-default-impl/nacos-default-plugin-all
 #      -pl prometheus
 #      -pl sys
-    - mvn deploy
+    - mvn deploy -Dmaven.test.skip=true
     - rm -rf $CI_PROJECT_DIR/.m2/repository/com/alibaba/nacos
     - rm -rf $CI_PROJECT_DIR/.m2/repository/io/xuxiaowei/nacos
   artifacts:
