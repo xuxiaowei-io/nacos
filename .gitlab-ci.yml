@@ -68,8 +68,10 @@ build:
     - find nacos -name "pom.xml" | while read file; do   sed -i 's#<groupId>com.alibaba.nacos</groupId>#<groupId>io.xuxiaowei.nacos</groupId>#g' "$file"; done
     - sed -i "s#release-sign-artifacts#xxx#" $CI_PROJECT_DIR/nacos/client/pom.xml
     - sed -i "s#<artifactId>nacos-default-plugin-all</artifactId>#<artifactId>nacos-default-plugin-all</artifactId><packaging>pom</packaging>#" $CI_PROJECT_DIR/nacos/plugin-default-impl/nacos-default-plugin-all/pom.xml
+    - sed -i "s#nacos-all-\${revision}#nacos-all-\${project\.version}#" $CI_PROJECT_DIR/nacos/config/pom.xml
     - sed -i "s#\${revision}#2\.4\.0\.1#" $CI_PROJECT_DIR/nacos/config/pom.xml
     - sed -i "s#\${revision}#2\.4\.0\.1#" $CI_PROJECT_DIR/nacos/core/pom.xml
+    - sed -i "s#<version>\${revision}</version>#<version>\${revision}</version><relativePath>../pom.xml</relativePath>#" $CI_PROJECT_DIR/nacos/plugin-default-impl/nacos-default-plugin-all/pom.xml
     - sed -i "s#\${revision}#2\.4\.0\.1#" $CI_PROJECT_DIR/nacos/plugin-default-impl/nacos-default-plugin-all/pom.xml
     - ./maven-dependencies dependency   edit --file-path=$CI_PROJECT_DIR/nacos/pom.xml                                                    --group-id=io.xuxiaowei.nacos         --artifact-id=logback-adapter          --after-group-id=com.alibaba.nacos
     - ./maven-dependencies dependency   edit --file-path=$CI_PROJECT_DIR/nacos/client/pom.xml                                             --group-id=io.xuxiaowei.nacos         --artifact-id=logback-adapter          --after-group-id=com.alibaba.nacos
