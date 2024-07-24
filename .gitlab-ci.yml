@@ -46,7 +46,7 @@ build:
     - git clone --depth 1 --branch $NACOS_TAG_VERSION https://github.com/alibaba/nacos.git
     - sed -i "s#2.4.0#2.4.0.1#" ./nacos/pom.xml
     - POM_XML=$(echo -e "$POM_XML" | tr -d '\n')
-    - sed -i "s#sona#ossrh#" ./nacos/pom.xml
+    - sed -i "s#<id>sona</id>#<id>ossrh</id>#" ./nacos/pom.xml
     - sed -i "s#oss.sonatype.org#s01.oss.sonatype.org#" ./nacos/pom.xml
 #    - sed -i "s#</project>#$POM_XML&#" ./nacos/api/pom.xml
 #    - sed -i "s#</project>#$POM_XML&#" ./nacos/auth/pom.xml
